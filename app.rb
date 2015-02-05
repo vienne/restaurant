@@ -65,26 +65,31 @@ class Restaurant < Sinatra::Base
  	end
 
   get '/parties/:id' do
+  	#showing all orders the party has ordered
   	@party = Party.find(params[:id])
   	@food = @party.foods
+  	#for adding new food
   	@new_food = Food.all
   	erb :'parties/show'
   end
 
   post '/parties' do
+  	#form for adding food to the party's order
  		party = Party.create(params[:party])
  		redirect to "parties/#{party.id}"
  	end
 
  	get '/parties/:id/edit' do
+ 		#shows the party edit form
  		@parties = Party.all
     @party = Party.find(params[:id])
     erb :'parties/edit'
   end
 
   patch '/parties/:id' do
+  	#party edit form
     @party = Party.find(params[:id])
-    party.update(params[:party])
+    @party.update(params[:party])
     @foods = Food.all
 
 
@@ -92,10 +97,35 @@ class Restaurant < Sinatra::Base
   end
 
   delete '/parties/:id' do
+  	#deleting party 
     party = Party.find(params[:id])
     party.destroy
     redirect to "/parties"    
   end
+
+  
+
+  delete '/parties/:id' do
+  	#deleting party 
+    party = Party.find(params[:id])
+    party.foods.destroy(params[:food])
+    redirect to "/parties"    
+  end
+
+  # get '/parties/:id/foods/edit' do
+  # 	@party = Party.find(params[:id])
+  # 	@food = @party.foods
+
+  # 	erb :'parties/food_edit'
+  # end
+
+  # delete '/parties/:id/foods' do
+  # 	party = Party.find(params[:id])
+  # 	foods = party.orders.find(params[:id])
+  # end
+ 
+
+
 
   post '/orders' do
   	order = Order.create(params[:order])
@@ -122,14 +152,15 @@ class Restaurant < Sinatra::Base
 
 	patch '/parties/:id' do
 		@party = Party.find(params[:id])
-		party.update(params[:party])
+		@party.paid = 'true'
+		@party.save
 		
 		redirect to "parties/#{party.id}"
 	end
 
 
 	get "/*" do
-    redirect to("/")
+    redirect to "/parties"
   end
 
 end

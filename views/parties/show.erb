@@ -1,13 +1,14 @@
 <h2> Table Number:<%= @party.table_number %></h2>
 <p> Guests:<%= @party.guests %></p>
-<p> Paid?  
+<p> 
 	<% if @party.paid %>
-		<p>Paid!</p>
+		<p>THIS TABLE HAS PAID!</p>
 	<% else %> 
-		<p>Need to pay!</p>
+		<p>THIS TABLE NEEDS TO PAY!</p>
 	<%end%>
+	
+	<p><a href="/parties/<%=@party.id %>/edit"%>Edit Table</a></p>
 	<br>
-
 
 <h2>Current Orders:</h2>
 

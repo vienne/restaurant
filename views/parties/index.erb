@@ -1,8 +1,7 @@
 <% @parties.each do |party| %>
-	<h2><a href="/parties/<%= party.id %>"><%= party.id %></a></h2>
-	<p>Table Number: <%= party.table_number %></p>
+	<h2><a href="/parties/<%= party.id %>">TABLE NUMBER:<%= party.table_number %></a></h2>
 	<p>Guests: <%= party.guests %></p>
-	<p>Paid: $<%= party.paid %></p>
+	<p>Paid: <%= party.paid %></p>
 	<%end%>
 
 	
