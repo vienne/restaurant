@@ -1,0 +1,10 @@
+
+<h2>Table Number: <%=@party.table_number %></h2>
+
+<form action="/parties/<%= @party.id %>" method='POST'>
+<input type="submit" name="party[paid]" value="Mark as PAID">
+
+<input type="hidden" name="_method" value="PATCH">
+  <input type="submit">
+ 
+</form>

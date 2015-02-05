@@ -1,0 +1,6 @@
+<% @foods.each do |food| %>
+	<h2><a href="/foods/<%= food.id %>"><%= food.name %></a></h2>
+	<p>Cuisine: <%= food.cuisine %></p>
+	<p>Allergens: <%= food.allergens %></p>
+	<p>Price: $<%= food.price %></p>
+	<%end%>

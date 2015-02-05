@@ -1,0 +1,10 @@
+<h2>Table Number: <%=@party.table_number%></h2>
+
+<h2> Items: </h2>
+<% @party.foods.each do |x| %>
+	<p>	<%= x.name %> </p>
+	<p>	$<%= x.price %> </p>
+<%end%>
+<h3>TOTAL: <%= @party.foods.sum("price") %></h3>
+
+<h3><a href="/parties/<%= @party.id%>/checkout">CHECKOUT</a></h3>

@@ -1,0 +1,43 @@
+<h2> Table Number:<%= @party.table_number %></h2>
+<p> Guests:<%= @party.guests %></p>
+<p> Paid?  
+	<% if @party.paid %>
+		<p>Paid!</p>
+	<% else %> 
+		<p>Need to pay!</p>
+	<%end%>
+	<br>
+
+
+<h2>Current Orders:</h2>
+
+	<% if @food != [] %>
+			<% @food.each do |food| %>
+			<ol>
+			<li>Item: <%= food.name %></li>
+			Allergens: <%= food.allergens %><br>
+			Price: $<%= food.price %><br>
+			</ol>
+			<form action="/parties/<%= @party.id %>" method="POST">
+  		<input type="hidden" name="_method" value="DELETE">
+ 		 <input type="submit" value="Delete Item">
+		</form>
+			<%end%>
+	<% else %>
+			<p>"Nothing ordered yet!" </p>
+	<%end%>
+
+
+ 
+<h2>Add an Order:</h2>
+<form action="/orders" method='POST'>
+ <select name="order[food_id]">
+      <% @new_food.each do |food| %>
+     <option value="<%= food.id %>"><%= food.name %></option>
+      <% end %>
+<input type="hidden" name="order[party_id]" value="<%=@party.id%>">
+  <input type="submit">
+</form>
+
+<h3><a href="/parties/<%= @party.id%>/receipt">Generate Receipt</a></h3>
+
