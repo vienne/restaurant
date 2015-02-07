@@ -2,9 +2,12 @@
 <form action="/parties" method='POST'>
 	Table Number: <input type="text" name='party[table_number]' ><br>
   Guests: <input type="text" name='party[guests]' ><br>
- 
 
-
+	Waiter:<select name="party[employee_id]">
+		<% @employees.each do |employee| %>
+			<option value="<%= employee.id %>" selected= @employee_id><%= employee.name %></option>
+		<% end %>
+	</select>
 <input type="submit">
 </form>
 

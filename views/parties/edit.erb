@@ -1,27 +1,25 @@
 <h2>Edit Table Details</h2>
 <form action="/parties/<%= @party.id %>" method='POST'>
 	<label for="party_table_number">Table Number:</label>
-	<select name="party[table_number]">
-   		<% @parties.each do |party| %>
-    	<option value="<%= party.table_number %>"><%= party.table_number %></option>
 
-    	<% end %><br>
+  Waiter:<select name="party[employee_id]">
+    <% @employees.each do |employee| %>
+      <option value="<%= employee.id %>"><%= employee.name %></option>
+    <% end %>
   </select>
 
+	 <select name="party[table_number]">
+   		<% @parties.each do |party| %>
+    	 <option value="<%= party.table_number %>"><%= party.table_number %></option>
+
+    	<% end %><br>
+    </select>
 
 
-
-  <label for="party_guests">Guests:</label>
-  <input type="text" name='party[guests]'><br>
+	<label for="party_guests">Guests:</label>
+  <input type="text" name='party[guests]' value='<%= @party.guests %>'><br>
   
-  <label for="paid">Paid:</label>
-  <select name="party[paid]">
-    <option value="true">Yes</option>
-    <option value="false">No</option>
-	</select>
-
-
-<input type="hidden" name="_method" value="PATCH">
+  <input type="hidden" name="_method" value="PATCH">
   <input type="submit">
 </form>
 

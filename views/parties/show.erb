@@ -1,44 +1,55 @@
 <h2> Table Number:<%= @party.table_number %></h2>
+<h2>Server: <%= @party.employee.name %></h2>
 <p> Guests:<%= @party.guests %></p>
-<p> 
-	<% if @party.paid %>
-		<p>THIS TABLE HAS PAID!</p>
-	<% else %> 
-		<p>THIS TABLE NEEDS TO PAY!</p>
-	<%end%>
-	
-	<p><a href="/parties/<%=@party.id %>/edit"%>Edit Table</a></p>
-	<br>
+
+<% if @party.paid %>
+	<p>THIS TABLE HAS PAID!</p>
+<% else %> 
+	<p>THIS TABLE NEEDS TO PAY!</p>
+<%end%>
+
+<p><a href="/parties/<%=@party.id %>/edit"%>Edit Table</a></p>
+<br>
 
 <h2>Current Orders:</h2>
 
-	<% if @food != [] %>
-			<% @food.each do |food| %>
-			<ol>
-			<li>Item: <%= food.name %></li>
-			Allergens: <%= food.allergens %><br>
-			Price: $<%= food.price %><br>
-			</ol>
-			<form action="/parties/<%= @party.id %>" method="POST">
-  		<input type="hidden" name="_method" value="DELETE">
- 		 <input type="submit" value="Delete Item">
-		</form>
-			<%end%>
-	<% else %>
-			<p>"Nothing ordered yet!" </p>
-	<%end%>
+<% if @orders.any? %>
+	<ol>
+		<% @orders.each do |order| %>
+			<li>
+
+				Item: <%= order.food.name %>
+				Allergens: <%= order.food.allergens %><br>
+				Price: <%= currency(order.food.price) %><br>
+
+				<form action="/orders/<%= order.id %>" method="POST">
+					<input type="hidden" name="_method" value="DELETE">
+					<input type="submit" value="Delete Item">
+				</form>
+
+			</li>
+		<%end%>
+	</ol>
+<% else %>
+	<p>"Nothing ordered yet!" </p>
+<% end %>
 
 
- 
+
 <h2>Add an Order:</h2>
 <form action="/orders" method='POST'>
- <select name="order[food_id]">
-      <% @new_food.each do |food| %>
-     <option value="<%= food.id %>"><%= food.name %></option>
-      <% end %>
-<input type="hidden" name="order[party_id]" value="<%=@party.id%>">
-  <input type="submit">
-</form>
+	<select name="order[food_id]">
+		<% @new_food.each do |food| %>
+			<option value="<%= food.id %>"><%= food.name %></option>
+		<% end %>
+		<input type="hidden" name="order[party_id]" value="<%=@party.id%>">
+		<input type="submit">
+	</form>
 
-<h3><a href="/parties/<%= @party.id%>/receipt">Generate Receipt</a></h3>
+	<h3><a href="/parties/<%= @party.id%>/receipt">Generate Receipt</a></h3>
+
+<!-- <form action="/parties/<%= @party.id %>" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Party">
+</form> -->
 

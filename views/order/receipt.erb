@@ -1,10 +1,21 @@
-<h2>Table Number: <%=@party.table_number%></h2>
 
+<h2>Table Number: <%=@party.table_number%></h2>
+<h2>You server, <%=@party.employee.name%> thanks you for your for your visit!</h2>
 <h2> Items: </h2>
 <% @party.foods.each do |x| %>
 	<p>	<%= x.name %> </p>
-	<p>	$<%= x.price %> </p>
+	<p>	<%= currency(x.price) %> </p>
 <%end%>
-<h3>TOTAL: <%= @party.foods.sum("price") %></h3>
+<h3>TOTAL: <%= currency(@party.foods.sum("price")) %></h3>
 
+<%twenty = @party.foods.sum("price").to_f * 0.20 %>
+<%twenty_five = @party.foods.sum("price").to_f * 0.25 %>
+<%thirty = @party.foods.sum("price").to_f * 0.30 %>
+<p>Suggested Tip:</p>
+<p>20%: <%= currency(twenty) %></p>
+<p>25%: <%= currency(twenty_five) %></p>
+<p>30%: <%= currency(thirty) %></p>
+
+<h3>Tip:  ______________</h3>
+<h3>Total: _____________</h3>
 <h3><a href="/parties/<%= @party.id%>/checkout">CHECKOUT</a></h3>

@@ -1,10 +1,14 @@
 
 <h2>Table Number: <%=@party.table_number %></h2>
+<h2>Server: <%=@party.employee.name %></h2>
 
-<form action="/parties/<%= @party.id %>" method='POST'>
-<input type="submit" name="party[paid]" value="Mark as PAID">
 
-<input type="hidden" name="_method" value="PATCH">
-  <input type="submit">
- 
+<form action="/parties/<%= @party.id %>/checkout" method='POST'>
+
+	Tip <input type="text" name='party[tips]' ><br>
+
+	<input type="hidden" name="party[paid]" value="1">
+	<input type="hidden" name="_method" value="PATCH">
+
+	<input type="submit" value="Mark as PAID">
 </form>

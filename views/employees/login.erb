@@ -1,0 +1,14 @@
+<h2>Please Log-In</h2>
+
+<form action="/employees/login" method='POST'>
+
+Who are you? <select name="employee_id">
+    <% @employees.each do |employee| %>
+      <option value="<%= employee.id %>"><%= employee.name %></option>
+    <% end %>
+  </select>
+
+
+	Password: <input type="password" name='password' ><br>
+  <input type="submit">
+</form>

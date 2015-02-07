@@ -1,0 +1,16 @@
+<h2>Employee: <%= @employee.name %></a> </h2>
+	<p>Employee ID: <%= @employee.id %></p>
+	
+	<% today_parties = @parties.select do |party| %>
+		<% party.created_at > Date.yesterday %>
+		<% end %>
+
+		<% sum = 0 %>
+		<% today_parties.each do |party| %>
+		<% sum += party.tips %>
+		<% end %>
+		
+	<p>Tips Made Today: <%= sum %> </p>
+
+	<p><a href="/employees/<%=@employee.id%>/edit">Edit <%= @employee.name %></a><p>
+                                                                             
