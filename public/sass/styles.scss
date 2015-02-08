@@ -1,0 +1,98 @@
+body {
+	font-family: 'Inconsolata';
+	.name {
+			h1 {
+				font-size: 50px;
+				margin-bottom: 8px;
+
+			}
+			h2 {
+				font-size: 28px;
+				margin-top:8px;
+			}
+			h3 {
+				font-size: 26px;
+				margin-top: 8px;
+
+			}
+	}
+	#nav {
+		width: 100%;
+		float: left;
+		margin: 0 auto;
+		padding: 0;
+		list-style: none;
+		font-weight: bold;
+
+			a {
+				float: left;
+				margin: 5px 10px 5px 10px;
+				text-decoration: none;
+				font-size: 16px;
+				color: #1d576d;
+				padding: 8px;
+				text-align: center;
+			}
+		}
+
+		#main img{
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			width: 60%;
+			height: auto;
+		}
+
+		.employee {
+			font-size: 18px;
+		}
+
+		.password {
+			font-size: 18px;
+		}
+
+		.drop_down {
+			display: inline;
+		}
+				
+		.drop_down select {
+				width: 100px;
+				margin-bottom: 20px;
+			}
+		
+		.text_box {
+			margin-bottom: 20px;
+		}
+		
+		form {
+ 		width: 50%;
+		}
+
+		form label {
+ 		display: block;
+ 		font-size: 30px;
+		}
+
+		form input[type='text'] {
+ 		width: 200px;
+		}
+
+		form input + label {
+ 		margin-top: 1em;
+		}
+}
+
+@media only screen and (min-width: 1300px) {
+		nav {
+			width: 0 auto;
+
+		}
+}
+
+@media only screen and (max-width: 650px) {
+#nav a {
+	float: none;
+	display: block;
+	width: 100%;
+}
+}

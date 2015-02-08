@@ -1,13 +1,17 @@
 <h2>New Table</h2>
 <form action="/parties" method='POST'>
-	Table Number: <input type="text" name='party[table_number]' ><br>
-  Guests: <input type="text" name='party[guests]' ><br>
-
-	Waiter:<select name="party[employee_id]">
-		<% @employees.each do |employee| %>
-			<option value="<%= employee.id %>" selected= @employee_id><%= employee.name %></option>
+	Table Number: <select name="party[table_number]">
+		<% index = 1  %>
+		<% while index < 13 %>
+			<option value="<%= index %>"><%= index %> 
+			</option>
+			<% index += 1 %>
 		<% end %>
 	</select>
+	<br>
+  Guests: <input type="text" name='party[guests]' >
+  <br>
+
 <input type="submit">
 </form>
 

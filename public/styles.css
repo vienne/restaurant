@@ -1,0 +1,63 @@
+body {
+  font-family: 'Inconsolata'; }
+  body .name h1 {
+    font-size: 50px;
+    margin-bottom: 8px; }
+  body .name h2 {
+    font-size: 28px;
+    margin-top: 8px; }
+  body .name h3 {
+    font-size: 26px;
+    margin-top: 8px; }
+  body #nav {
+    width: 100%;
+    float: left;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    font-weight: bold; }
+    body #nav a {
+      float: left;
+      margin: 5px 10px 5px 10px;
+      text-decoration: none;
+      font-size: 16px;
+      color: #1d576d;
+      padding: 8px;
+      text-align: center; }
+  body #main img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    height: auto; }
+  body .employee {
+    font-size: 18px; }
+  body .password {
+    font-size: 18px; }
+  body .drop_down {
+    display: inline; }
+  body .drop_down select {
+    width: 100px;
+    margin-bottom: 20px; }
+  body .text_box {
+    margin-bottom: 20px; }
+  body form {
+    width: 50%; }
+  body form label {
+    display: block;
+    font-size: 30px; }
+  body form input[type='text'] {
+    width: 200px; }
+  body form input + label {
+    margin-top: 1em; }
+
+@media only screen and (min-width: 1300px) {
+  nav {
+    width: 0 auto; } }
+@media only screen and (max-width: 650px) {
+  #nav a {
+    float: none;
+    display: block;
+    width: 100%; } }
+
+/*# sourceMappingURL=styles.css.map */

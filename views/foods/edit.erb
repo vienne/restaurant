@@ -1,6 +1,7 @@
 <h2>Editing <%= @food.name %></h2>
 
 <form action="/foods/<%= @food.id %>" method='POST'>
+	 
   Name: <input type="text" name='food[name]' value="<%= @food.name %>"><br>
   
   Cuisine: <input type="text" name='food[cuisine]' value="<%= @food.cuisine %>"><br>

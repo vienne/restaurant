@@ -2,13 +2,20 @@
 
 <form action="/employees/login" method='POST'>
 
-Who are you? <select name="employee_id">
+  <div class="drop_down">
+	<label for="employee">Who are you?</label>
+	<select name="employee_id">
     <% @employees.each do |employee| %>
-      <option value="<%= employee.id %>"><%= employee.name %></option>
+      <option value="<%= employee.id %>">
+      	<%= employee.name %>
+     	</option>
     <% end %>
   </select>
+  </div>
 
+  <div class="text_box">
+	<label for="password">Password</label>
+  <input type="password" name='password' ></div>
 
-	Password: <input type="password" name='password' ><br>
   <input type="submit">
 </form>

@@ -12,6 +12,13 @@ class Restaurant < Sinatra::Base
   enable :sessions
   set :rest_password, "yourmom"
   # Console
+
+  before '*' do 
+    unless (request.path == '/employees/login' || session[:employee_id])
+      redirect to ('/employees/login')
+    end
+  end
+
   get "/console" do
     Pry.start(binding)
     ""
@@ -51,8 +58,10 @@ class Restaurant < Sinatra::Base
     if food.valid?
       redirect to "/foods/#{food.id}"
     else
-      
-      redirect to "/foods/error"
+      @food = food
+      @error_messages = food.errors.messages
+      # redirect to "/foods/error"
+      erb :'foods/new'
     end
   end
   
@@ -75,15 +84,13 @@ class Restaurant < Sinatra::Base
   end
 
   get '/parties' do
-  	@parties = Party.where(paid:'false')
+  	@parties = Party.where(paid: false)
 
   	erb :'parties/index'
   end
 
   get '/parties/new' do
-    #figure this out!!!!!
-    @employee_id = session[:employee]
-    @employees = Employee.all
+
  		erb :'parties/new'
  	end
 
@@ -98,7 +105,8 @@ class Restaurant < Sinatra::Base
 
   post '/parties' do
   	#form for adding food to the party's order
- 		party = Party.create(params[:party])
+    params[:party][:employee_id] = session[:employee_id]
+    party = Party.create(params[:party])
  		redirect to "parties/#{party.id}"
  	end
 
@@ -108,7 +116,7 @@ class Restaurant < Sinatra::Base
     @party = Party.find(params[:id])
     @employees = Employee.all
     erb :'parties/edit'
-    Pry.start(binding)
+
   end
 
   patch '/parties/:id' do
@@ -142,7 +150,10 @@ class Restaurant < Sinatra::Base
 	end
 
   patch '/orders/:id' do
-
+    #WHAT THE FUCK IS THIS
+    @order = Order.find(params[:id])
+    @order.update(params[:order])
+    redirect to "/parties/#{@order.party_id}"
   end
 
   # deletes the connection between a party and a food (order is the connector)
@@ -164,8 +175,7 @@ class Restaurant < Sinatra::Base
 
 	patch '/parties/:id/checkout' do
 		@party = Party.find(params[:id])
-    #CANT GET TOTAL INTO TABLE
-    @party.total= @party.foods.sum("price")
+    @party.total= @party.foods.sum(:price)
 		@party.paid = 'true'
     @party.tips = params[:party][:tips]
    
@@ -175,33 +185,40 @@ class Restaurant < Sinatra::Base
 	end
 
   get '/employees' do
+    @employee = Employee.find(session[:employee_id])
+
     @employees = Employee.all
-    erb :'employees/login'  
+    erb :'employees/index'
   end
 
   get '/employees/new' do
     erb :'employees/new'
   end
 
+  post '/employees' do
+    employee = Employee.create(params[:employee])
+    redirect to "employees/#{employee.id}"
+  end
+
+  get '/employees/login' do
+    @employees = Employee.all
+    erb :'employees/login'  
+  end
+
   post '/employees/login' do
     if params[:password] == settings.rest_password
-      session[:employee] = params[:employee_id]
-      Pry.start(binding)
+      session[:employee_id] = params[:employee_id]
       redirect to "/parties"
     else 
-      redirect to "/employees"
+      redirect to "/employees/login"
     end
   end
 
   get '/employees/:id' do
-    @employee = Employee.find(params[:id])
+    @employee = Employee.find(session[:employee_id])
+    # @employee = Employee.find(params[:id])
     @parties = @employee.parties
     erb :'employees/show'
-  end
-
-  post '/employees' do
-    employee = Employee.create(params[:employee])
-    redirect to "employees/#{employee.id}"
   end
 
   get '/employees/:id/edit' do
@@ -221,8 +238,19 @@ class Restaurant < Sinatra::Base
     redirect to "/employees"    
   end
 
+  get '/receipts' do
+    @parties = Party.all
+
+    erb :'receipts/index'
+  end
+
+  get '/logout' do 
+    session.clear
+    redirect to '/employees/login'
+  end
+
 	get "/*" do
-    redirect to "/parties"
+    redirect to "/employees/login"
   end
 
 end

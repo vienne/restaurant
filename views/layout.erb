@@ -1,16 +1,32 @@
 <html>
 <head>
 	<title>My Restaurant</title>
+	<link href="/styles.css" type="text/css" rel="stylesheet" /> 
+	<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<h1>Totes Noods</h1>
-	<ul>
-  <li><a href="/foods">Menu</a></li>
-  <li><a href="/foods/new">Create New Menu Item</a></li>
-  <li><a href="/parties">Open Tables</a></li>
-  <li><a href="/parties/new">New Table</a></li>
-  <li><a href="/employees">Employees</a></li>
-</ul>
+	<div class ="name">
+		<h1>totes noods</h1>
+		<h2>&ltnoods that are not nood&gt</h2>
+		<h3>CASH ONLY!</h3>
+	</div>
+	
+
+	<ul id = "nav">
+  	<li><a href="/foods">Menu</a></li>
+  	<li><a href="/foods/new">Create Menu Item</a></li>
+  	<li><a href="/parties">Open Tables</a></li>
+  	<li><a href="/parties/new">New Table</a></li>
+ 		<li><a href="/employees/<%= session[:employee_id]%>/edit">Edit Your Profile</a></li>
+ 		<li><a href="/logout">Logout</a></li>
+ 		<li><a href="/receipts">All Receipts</a></li>
+ 		<li><a href="/console">Console</a></li>
+	</ul>
+	
+	<div id="main">
+		<img src="http://finedininglovers.cdn.crosscast-system.com/BlogPost/xl_3043_pasta-tp.jpg">
+	</div>
+
 	<%= yield %>
 </body>
 </html>

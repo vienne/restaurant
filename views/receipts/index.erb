@@ -1,0 +1,11 @@
+<h2>ALL RECEIPTS</h2>
+<ol>
+	<% @parties.each do |party| %>
+		<li>
+			TOTAL: <%= currency(party.total) %><br>
+			TIPS: <%= currency(party.tips) %><br>
+			CLOSED OUT AT: <%= party.updated_at %><br>
+		</li>
+	<% end %>
+</ol>
+
