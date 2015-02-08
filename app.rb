@@ -11,7 +11,6 @@ class Restaurant < Sinatra::Base
   
   enable :sessions
   set :rest_password, "yourmom"
-  # Console
 
   before '*' do 
     unless (request.path == '/employees/login' || session[:employee_id])
@@ -181,12 +180,22 @@ class Restaurant < Sinatra::Base
    
 		@party.save
 		
-		redirect to "/parties"
+		redirect to "/parties/#{@party.id}/final"
 	end
+
+  get '/parties/:id/final' do
+    @party = Party.find(params[:id])
+    erb :'parties/final'
+  end
 
   get '/employees' do
     @employee = Employee.find(session[:employee_id])
 
+    @employees = Employee.all
+    erb :'employees/index'
+  end
+
+  get '/employees/index' do
     @employees = Employee.all
     erb :'employees/index'
   end

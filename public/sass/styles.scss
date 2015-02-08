@@ -1,13 +1,17 @@
 body {
 	font-family: 'Inconsolata';
+	h2 {
+		font-size: 24px;
+	}
 	.name {
 			h1 {
-				font-size: 50px;
+				font-size: 70px;
 				margin-bottom: 8px;
+				color: #41284f;
 
 			}
 			h2 {
-				font-size: 28px;
+				font-size: 24px;
 				margin-top:8px;
 			}
 			h3 {
@@ -16,34 +20,121 @@ body {
 
 			}
 	}
-	#nav {
+	/*#nav {
 		width: 100%;
-		float: left;
+		text-align: center;
 		margin: 0 auto;
 		padding: 0;
 		list-style: none;
 		font-weight: bold;
+		margin-bottom: 20px;
+		margin-top: 30px;
+
+			li {
+				display: inline;
+				text-align: center;
+				
+			}
 
 			a {
-				float: left;
 				margin: 5px 10px 5px 10px;
 				text-decoration: none;
-				font-size: 16px;
+				font-size: 20px;
 				color: #1d576d;
 				padding: 8px;
 				text-align: center;
+	
+			
 			}
+		}*/
+nav {
+	margin-top: 0;
+}
+
+nav ul ul {
+	display: none;
+}
+
+	nav ul li:hover > ul {
+		display: block;
+	}
+
+nav ul {
+	background: #8EABB6; 
+	background: linear-gradient(top, #4a788a 0%, #8EABB6 100%);  
+	background: -moz-linear-gradient(top, #4a788a 0%, #8EABB6 100%); 
+	background: -webkit-linear-gradient(top, #4a788a 0%,#8EABB6 100%); 
+	box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
+	padding: 0 12px;
+	border-radius: 12px;  
+	list-style: none;
+	position: relative;
+	display: inline-table;
+	margin-bottom: 40px;
+}
+	nav ul:after {
+		content: ""; 
+		clear: both; 
+		display: block;
+	}
+
+	nav ul li {
+	float: left;
+
+}
+	nav ul li:hover {
+		background: #174557;
+		background: linear-gradient(top, #33677b 0%, #174557 40%);
+		background: -moz-linear-gradient(top, #33677b 0%, #174557 40%);
+		background: -webkit-linear-gradient(top, #33677b 0%, #174557 40%);
+	}
+		nav ul li:hover a {
+			color: white;
 		}
+	
+	nav ul li a {
+		display: block; 
+		padding: 20px 20px;
+		color: black; 
+		text-decoration: none;
+		font-size: 28px;
+	}
+
+	nav ul ul {
+	background: #174557; 
+	border-radius: 0px; 
+	padding: 0;
+	position: absolute; 
+	top: 100%;
+}
+	nav ul ul li {
+		float: none; 
+		border-top: 1px solid #6b727c;
+		border-bottom: 1px solid #575f6a;
+		position: relative;
+	}
+		nav ul ul li a {
+			padding: 15px 40px;
+			color: white;
+		}	
+			nav ul ul li a:hover {
+				background: #4b545f;
+			}
+
+
+
+
 
 		#main img{
 			display: block;
 			margin-left: auto;
 			margin-right: auto;
+			margin-bottom: 40px;
 			width: 60%;
 			height: auto;
 		}
 
-		.employee {
+		.employee_id select {
 			font-size: 18px;
 		}
 
@@ -56,8 +147,15 @@ body {
 		}
 				
 		.drop_down select {
-				width: 100px;
-				margin-bottom: 20px;
+			background: #1D576D;
+			color: white;
+   		width: 268px;
+   		padding: 5px;
+   		font-size: 24px;
+   		line-height: 1;
+   		border: 0;
+   		border-radius: 0;
+   		height: 34px;
 			}
 		
 		.text_box {
@@ -65,34 +163,122 @@ body {
 		}
 		
 		form {
- 		width: 50%;
+ 			width: 50%;
+
+		}
+
+		.form-text {
+				font-size: 24px;
+				color: #41284f;
+				margin-bottom: 20px;
 		}
 
 		form label {
- 		display: block;
- 		font-size: 30px;
+ 			display: block;
+ 			font-size: 32px;
 		}
 
 		form input[type='text'] {
- 		width: 200px;
+ 			width: 200px;
+ 			height: 34px;
+ 			font-size: 18px;
+ 			margin-bottom: 20px;
+ 			
+ 	
+		}
+
+		.drop_down select {
+			background: #1D576D;
+			color: white;
+   		width: 268px;
+   		padding: 5px;
+   		font-size: 24px;
+   		line-height: 1;
+   		border: 0;
+   		border-radius: 0;
+   		height: 34px;
+
+			}
+
+		form input[type='password']{
+			width: 200px;
+ 			height: 32px;
+ 			border: 2px solid #1D576D;
+ 			border-radius: 12px;
+		}
+
+		form input[type='submit']{
+			width: 200px;
+			height: 32px;
+			padding: 0;
+			background: #41284f;
+			color: white;
+			font-size: 18px;
+			border: 2px;
+			border-radius: 12px;
+			text-align: center;
+			vertical-align: 0;
+
+		}
+
+		form input[type="integer"]{
+			width: 200px;
+ 			height: 34px;
+ 			font-size: 18px;
+ 			margin-bottom: 20px;
 		}
 
 		form input + label {
  		margin-top: 1em;
 		}
+
+		a {
+			text-decoration: none;
+		}
+
+		.link {
+				font-size: 24px;
+				color: #41284f;
+				margin-bottom: 80px;
+				a {
+					border: 2px solid #8A69A1;
+					border-radius: 12px;
+					padding: 10px;
+				}
+		}
+		.menu {
+			display: inline-block;
+			width: 30%;
+			text-align: center;
+			margin-bottom: 30px;
+		}
+		footer {
+			display: block;
+			margin: 0 auto;
+			font-size: 14px;
+			text-align: center;
+			margin-bottom: 50px;
+			margin-top: 50px;
+			h3 {
+				font-size: 18px;
+			}
+		}
+
+
+
 }
 
-@media only screen and (min-width: 1300px) {
+/*@media only screen and (min-width: 1300px) {
 		nav {
 			width: 0 auto;
 
 		}
-}
+}*/
 
-@media only screen and (max-width: 650px) {
+/*@media only screen and (max-width: 650px) {
 #nav a {
 	float: none;
 	display: block;
 	width: 100%;
 }
-}
+}*/

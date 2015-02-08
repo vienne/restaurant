@@ -2,7 +2,12 @@
 <h2> <%= @employee.name %></h2>
 
 <form action="/employees/<%= @employee.id %>" method='POST'>
-  Name: <input type="text" name='employee[name]' value="<%= @employee.name %>"><br>
+  <div class="form-text">
+  	Name: 
+  
+  <input type="text" name='employee[name]' value="<%= @employee.name %>">
+	</div>
+  <br>
 
   <input type="hidden" name="_method" value="PATCH">
   <input type="submit">

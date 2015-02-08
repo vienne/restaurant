@@ -1,3 +1,5 @@
+
+<div class="form-text">
 <h2>Employee: <%= @employee.name %></a> </h2>
 	<p>Employee ID: <%= @employee.id %></p>
 	
@@ -12,5 +14,7 @@
 		
 	<p>Tips Made Today: $<%= sum %> </p>
 
-	<p><a href="/employees/<%=@employee.id%>/edit">Edit <%= @employee.name %></a><p>
+	<div class="link"><a href="/employees/<%=@employee.id%>/edit">Edit <%= @employee.name %></a>
+	</div>
+	</div>
                                                                              

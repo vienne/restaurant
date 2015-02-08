@@ -1,0 +1,12 @@
+<h2>Table Number: <%=@party.table_number %></h2>
+<h2>Server: <%=@party.employee.name %></h2>
+<h2>TABLE CLOSED</h2>
+
+<h2>Table Number: <%=@party.tips %></h2>
+<h2>Total(pre-tip): <%=@party.total %></h2>
+
+<h2>Total: <%= currency(@party.tips + @party.total) %></h2>
+
+<h2><a href="/parties/">Go Back to Open Tables</a></h2>
+
+

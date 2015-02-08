@@ -1,9 +1,11 @@
-<h2>Please Log-In</h2>
+<div class="form-text">
+Employee Log-In
+</div>
 
 <form action="/employees/login" method='POST'>
 
-  <div class="drop_down">
 	<label for="employee">Who are you?</label>
+  <div class="drop_down">
 	<select name="employee_id">
     <% @employees.each do |employee| %>
       <option value="<%= employee.id %>">
@@ -13,9 +15,10 @@
   </select>
   </div>
 
-  <div class="text_box">
 	<label for="password">Password</label>
-  <input type="password" name='password' ></div>
+  <div class="text_box">
+  <input type="password" name='password' >
+  </div>
 
   <input type="submit">
 </form>

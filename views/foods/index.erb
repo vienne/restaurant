@@ -1,6 +1,8 @@
 <% @foods.each do |food| %>
+<div class="menu">
 	<h2><a href="/foods/<%= food.id %>"><%= food.name %></a></h2>
 	<p>Cuisine: <%= food.cuisine %></p>
 	<p>Allergens: <%= food.allergens %></p>
 	<p>Price: <%= currency(food.price) %></p>
+</div>
 	<%end%>

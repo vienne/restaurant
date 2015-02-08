@@ -6,27 +6,62 @@
 </head>
 <body>
 	<div class ="name">
-		<h1>totes noods</h1>
-		<h2>&ltnoods that are not nood&gt</h2>
-		<h3>CASH ONLY!</h3>
+		<h1>tötes nööds</h1>
+		<h2>&ltcash only&gt</h2>
 	</div>
 	
 
-	<ul id = "nav">
+	<!-- <ul id = "nav">
+ 		<li><a href="/employees/<%= session[:employee_id]%>">Your Profile</a></li>
   	<li><a href="/foods">Menu</a></li>
   	<li><a href="/foods/new">Create Menu Item</a></li>
-  	<li><a href="/parties">Open Tables</a></li>
   	<li><a href="/parties/new">New Table</a></li>
- 		<li><a href="/employees/<%= session[:employee_id]%>/edit">Edit Your Profile</a></li>
- 		<li><a href="/logout">Logout</a></li>
+  	<li><a href="/parties">Open Tables</a></li>
  		<li><a href="/receipts">All Receipts</a></li>
- 		<li><a href="/console">Console</a></li>
+ 		<li><a href="/employees/new">New Employee</a></li>
+ 		<li><a href="/logout">Logout</a></li>
 	</ul>
-	
+	 -->
+
+<nav>
+
+	<ul>
+ 		<li><a href="/employees/<%= session[:employee_id]%>">Profile</a>
+ 				<ul>
+ 					<li><a href="/employees/<%=session[:employee_id]%>/edit">Edit Your Profile</a></li>
+ 						<li><a href="/employees/new">New Employee</a></li>
+ 						<li><a href="/employees/index">All Employees</a></li>
+ 					</li>
+ 				</ul>
+  	<li><a href="/foods">Menu</a>
+  			<ul>
+  			<li><a href="/foods/new">Create a New Menu Item</a></li>
+  		</li>
+				</ul>
+  	<li><a href="/parties">Open Tables</a>
+  			<ul>
+  			<li><a href="/parties/new">New Table</a></li>
+				<li><a href="/receipts">View All Receipts</a></li>
+			</li>
+				</ul>
+ 	
+ 		<li><a href="/logout">Logout</a></li>
+	</ul>
+
+</nav>
+
+
 	<div id="main">
 		<img src="http://finedininglovers.cdn.crosscast-system.com/BlogPost/xl_3043_pasta-tp.jpg">
 	</div>
 
 	<%= yield %>
+
+	<footer>
+		<h3>totes noods</h3>
+		<a href="totesnoods@gmail.com">email us</a>
+		<p>(206) 230-5795</p>
+		<p>425 Koloa Street, Kahului, HI 96732</p>
+	</footer>
 </body>
 </html>

@@ -22,18 +22,19 @@
 				Allergens: <%= order.food.allergens %><br>
 				Price: <%=currency(order.food.price)%>
 				<% if order.free %>
-				<p> This item was comped. </p>
-				<%end%>
-
-				<form action="/orders/<%= order.id %>" method="POST">
-					<input type="hidden" name="_method" value="DELETE">
-					<input type="submit" value="Delete Item">
-				</form>
+				<p> This item as free! </p>
+				<% else %>
 
 				<form action="/orders/<%= order.id %>" method="POST">
 				<input type="hidden" name="order[free]" value="1">
 				<input type="hidden" name="_method" value="PATCH">
   				<input type="submit" value="Comp Item">
+  			<%end%>	
+
+  				<form action="/orders/<%= order.id %>" method="POST">
+					<input type="hidden" name="_method" value="DELETE">
+					<input type="submit" value="Delete Item">
+				</form>
 				</form>
 
 			</li>

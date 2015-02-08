@@ -1,5 +1,7 @@
-<h2>Add a new Food Item</h2>
 
+<div class="form-text">
+<h2>Add a new Food Item</h2>
+</div>
 <% if @error_messages %>
   <ul>
     <% @error_messages.each do |error_name, error_message| %>
@@ -8,6 +10,7 @@
   </ul>
 <% end %>
 
+<div class="form-text">
 <form action="/foods" method='POST'>
   Name: <input type="text" name='food[name]' ><br>
   Cuisine: <input type="text" name='food[cuisine]' ><br>
@@ -16,5 +19,6 @@
 
   <input type="submit">
 </form>
+</div>
 
 

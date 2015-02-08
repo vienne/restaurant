@@ -1,3 +1,5 @@
+<div class="form-text">
+
 <% @parties.each do |party| %>
 	<h2><a href="/parties/<%= party.id %>">TABLE NUMBER:<%= party.table_number %></a></h2>
 	<h2>Server: <%= party.employee.name %></h2>
@@ -7,5 +9,7 @@
 			<p>Nöpe!</p>
 			<% end %>
 	<%end%>
+
+</div>
 
 	
