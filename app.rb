@@ -12,11 +12,11 @@ class Restaurant < Sinatra::Base
   enable :sessions
   set :rest_password, "yourmom"
 
-  before '*' do 
-    unless (request.path == '/employees/login' || session[:employee_id])
-      redirect to ('/employees/login')
-    end
-  end
+  # before '*' do 
+  #   unless (request.path == '/employees/login' || session[:employee_id])
+  #     redirect to ('/employees/login')
+  #   end
+  # end
 
   get "/console" do
     Pry.start(binding)
