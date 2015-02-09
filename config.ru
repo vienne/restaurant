@@ -7,7 +7,7 @@ Bundler.require :default
 # Then connect to the database
 set :database, {
   adapter: "postgresql", database: "restaurant",
-  host: "localhost", port: 5432
+  username: 'root'
 }
 
 use Rack::MethodOverride
