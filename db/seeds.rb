@@ -11,6 +11,46 @@ ActiveRecord::Base.establish_connection(
   host: "localhost", port: 5432
 )
 
+CREATE TABLE foods (
+    id          SERIAL      PRIMARY KEY,
+    name        TEXT        NOT NULL,
+    cuisine     TEXT        NOT NULL,
+    allergens   TEXT        NOT NULL,
+    price       INT       NOT NULL,
+    created_at  TIMESTAMP,
+    updated_at  TIMESTAMP        
+  );
+
+CREATE TABLE parties (
+    id              SERIAL      PRIMARY KEY,
+    table_number     INT, 
+    guests          INT,               
+    paid           BOOLEAN       DEFAULT false,
+    created_at    TIMESTAMP,
+    updated_at    TIMESTAMP, 
+    employee_id     INT         NOT NULL,
+    tips            INT         DEFAULT 0,
+    total           INT         DEFAULT 0,
+            
+  );
+
+CREATE TABLE orders (
+    id            SERIAL      PRIMARY KEY,
+    food_id       INT,
+    party_id      INT,
+    created_at    TIMESTAMP,
+    updated_at    TIMESTAMP,
+    free          BOOLEAN     DEFAULT false
+    );
+
+
+CREATE TABLE employees (
+    id            SERIAL      PRIMARY KEY,
+    name          TEXT        NOT NULL
+  )
+
+
+
 [
   {
     name: "Ramen",
@@ -41,7 +81,28 @@ ActiveRecord::Base.establish_connection(
     cuisine: "Thai",
     price: 14,
     allergens: "Shellfish"
-  }
+  },
+  {
+    name: "Taiwanese Beef Noodle Soup",
+    cuisine: "Taiwanese",
+    price: 14,
+    allergens: "Soy"
+  },
+  {
+    name: "Yakisoba",
+    cuisine: "Japanese",
+    price: 14,
+    allergens: "Soy"
+  },
+  
+  {
+    name: "Laksa",
+    cuisine: "Malaysian",
+    price: 14,
+    allergens: "Shellfish"
+  },
+
+
 ].each do |food|
   Food.create( food )
 end
@@ -51,12 +112,18 @@ end
   {
     table_number: 1,
     guests: 2,
-    paid: false
+    paid: false,
+    employee_id: 3,
+    tips: 3,
+    total: 20
   },
   {
     table_number: 2,
     guests: 2,
-    paid: false
+    paid: false,
+    employee_id: 3,
+    tips: 4,
+    total: 18
   }
 ].each do |party|
   Party.create( party )
@@ -83,4 +150,26 @@ end
 ].each do |order|
   Order.create( order )
 end
+
+
+[
+  {
+    name: Yaniv
+    
+  },
+  {
+    
+    name: Jessie
+  },
+  {
+    
+    name: Robin
+  },
+  {
+    name: Matt
+  }
+].each do |employee|
+  Employee.create( employee )
+end
+
 

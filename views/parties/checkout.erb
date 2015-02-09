@@ -4,8 +4,10 @@
 
 
 <form action="/parties/<%= @party.id %>/checkout" method='POST'>
-
-	Tip <input type="text" name='party[tips]' ><br>
+<div class="form-text">
+	Tip 
+</div>
+	<input type="text" name='party[tips]' ><br>
 
 	<input type="hidden" name="party[paid]" value="1">
 	<input type="hidden" name="_method" value="PATCH">
