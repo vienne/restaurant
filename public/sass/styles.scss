@@ -65,7 +65,7 @@ nav ul {
 	background: -moz-linear-gradient(top, #4a788a 0%, #8EABB6 100%); 
 	background: -webkit-linear-gradient(top, #4a788a 0%,#8EABB6 100%); 
 	box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
-	padding: 0 12px;
+	padding: 0 8px;
 	border-radius: 12px;  
 	list-style: none;
 	position: relative;
@@ -94,7 +94,7 @@ nav ul {
 	
 	nav ul li a {
 		display: block; 
-		padding: 20px 20px;
+		padding: 12px 12px;
 		color: black; 
 		text-decoration: none;
 		font-size: 28px;
@@ -170,7 +170,19 @@ nav ul {
 		.form-text {
 				font-size: 24px;
 				color: #41284f;
-				margin-bottom: 20px;
+				margin-bottom: 16px;
+		}
+
+		.form-text {
+				h2 {
+					font-size: 24px;
+				}
+				p {
+					font-size: 20px;
+					margin: 0;
+
+				}
+		
 		}
 
 		form label {
@@ -178,11 +190,12 @@ nav ul {
  			font-size: 32px;
 		}
 
-		form input[type='text'] {
+		input[type='text'] {
  			width: 200px;
  			height: 34px;
  			font-size: 18px;
- 			margin-bottom: 20px;
+ 			margin-bottom: 16px;
+ 			display: block;
 		}
 
 		.drop_down select {
@@ -190,11 +203,12 @@ nav ul {
 			color: white;
    		width: 268px;
    		padding: 5px;
-   		font-size: 24px;
+   		font-size: 20px;
    		line-height: 1;
    		border: 0;
    		border-radius: 0;
    		height: 34px;
+   		margin-bottom: 16px;
 
 			}
 
@@ -205,7 +219,7 @@ nav ul {
  			border-radius: 12px;
 		}
 
-		form input[type='submit']{
+		input[type='submit']{
 			width: 200px;
 			height: 32px;
 			padding: 0;
@@ -216,14 +230,17 @@ nav ul {
 			border-radius: 12px;
 			text-align: center;
 			vertical-align: 0;
+			display: block;
+			margin-bottom: 16px;
 
 		}
 
-		form input[type="integer"]{
+		input[type="integer"]{
 			width: 200px;
  			height: 34px;
  			font-size: 18px;
- 			margin-bottom: 20px;
+ 			margin-bottom: 16px;
+ 			display: block;
 		}
 
 		form input + label {
@@ -236,12 +253,14 @@ nav ul {
 
 		.link {
 				font-size: 24px;
-				color: #41284f;
-				margin-bottom: 80px;
+				margin-bottom: 24px;
+				margin-top: 40px;
 				a {
-					border: 2px solid #8A69A1;
+					border: 2px solid #1d576d;
 					border-radius: 12px;
 					padding: 10px;
+					color: #0e293a;
+					font-weight: bold;
 				}
 		}
 		.menu {
@@ -249,6 +268,10 @@ nav ul {
 			width: 30%;
 			text-align: center;
 			margin-bottom: 30px;
+		}
+
+		.receipt{
+			margin-bottom: 50px;
 		}
 		footer {
 			display: block;
@@ -262,21 +285,51 @@ nav ul {
 			}
 		}
 
-
-
 }
 
-/*@media only screen and (min-width: 1300px) {
+@media only screen and (min-width: 1300px) {
 		nav {
 			width: 0 auto;
 
 		}
-}*/
+}
 
-/*@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 650px) {
+	body {
+		display: block;
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+		width: 20em;
+}
+	input[type="text"] {
+		display: block;
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+		width: 20em;
+	}
+}
 #nav a {
 	float: none;
 	display: block;
 	width: 100%;
 }
-}*/
+
+@media print {
+	body #main img{
+		display: none;
+	}
+	nav {
+		display: none;
+	}
+
+	p{
+		font-size: 12px;
+	}
+
+	.link {
+		display: none;
+	}
+
+}

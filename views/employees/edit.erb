@@ -1,9 +1,11 @@
+
 <h2>Edit Employee Information</h2>
 <h2> <%= @employee.name %></h2>
 
+<div class="small-screen">
 <form action="/employees/<%= @employee.id %>" method='POST'>
   <div class="form-text">
-  	Name: 
+  	Edit Your Name: 
   
   <input type="text" name='employee[name]' value="<%= @employee.name %>">
 	</div>
@@ -17,3 +19,5 @@
   <input type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Employee">
 </form>
+
+</div>

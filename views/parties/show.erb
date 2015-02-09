@@ -1,29 +1,41 @@
-<h2> Table Number:<%= @party.table_number %></h2>
-<h2>Server: <%= @party.employee.name %></h2>
-<p> Guests:<%= @party.guests %></p>
+<div class="form-text">
+	<h2> Table Number:<%= @party.table_number %></h2>
+	<h2>Server: <%= @party.employee.name %></h2>
+	<p> Guests:<%= @party.guests %></p>
 
-<% if @party.paid %>
-	<p>THIS TABLE HAS PAID!</p>
-<% else %> 
-	<p>THIS TABLE NEEDS TO PAY!</p>
-<%end%>
 
-<p><a href="/parties/<%=@party.id %>/edit"%>Edit Table</a></p>
-<br>
+	<% if @party.paid %>
+		<p>THIS TABLE HAS PAID!</p>
+	<% else %> 
+		<p>THIS TABLE NEEDS TO PAY!</p>
+	<%end%>
+</div>
 
-<h2>Current Orders:</h2>
+<div class="link">
+	<p><a href="/parties/<%=@party.id %>/edit"%>Edit Table</a></p>
+	<br>
+</div>
+<div class="form-text">
+	<h2>Current Orders:</h2>
+</div>
 
-<% if @orders.any? %>
-	<ol>
-		<% @orders.each do |order| %>
-			<li>
+<div class="form-text">
+	<% if @orders.any? %>
+		<ol>
+			<% @orders.each do |order| %>
+				<li>
 
-				Item: <%= order.food.name %><br>
-				Allergens: <%= order.food.allergens %><br>
-				Price: <%=currency(order.food.price)%>
+				<p>Item: <%= order.food.name %></p>
+				<br>
+
+				<p>Allergens: <%= order.food.allergens %></p>
+				<br>
+				<p>Price: <%=currency(order.food.price)%>
+				</p>
 				<% if order.free %>
 				<p> This item as free! </p>
 				<% else %>
+
 
 				<form action="/orders/<%= order.id %>" method="POST">
 				<input type="hidden" name="order[free]" value="1">
@@ -36,28 +48,34 @@
 					<input type="submit" value="Delete Item">
 				</form>
 				</form>
-
 			</li>
-		<%end%>
+			<%end%>
+
 	</ol>
 <% else %>
 	<p>"Nothing ordered yet!" </p>
 <% end %>
+</div>
+</div>
 
 
-
-<h2>Add an Order:</h2>
+<div class="form-text">
+	<h2>Add an Order:</h2>
+</div>
+<div class="drop_down">
 <form action="/orders" method='POST'>
 	<select name="order[food_id]">
 		<% @new_food.each do |food| %>
 			<option value="<%= food.id %>"><%= food.name %></option>
 		<% end %>
+</div>
 		<input type="hidden" name="order[party_id]" value="<%=@party.id%>">
 		<input type="submit">
 	</form>
 
-	<h3><a href="/parties/<%= @party.id%>/receipt">Generate Receipt</a></h3>
-
+<div class="link">
+	<a href="/parties/<%= @party.id%>/receipt">Generate Receipt</a>
+</div>
 <!-- <form action="/parties/<%= @party.id %>" method="POST">
   <input type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Party">
