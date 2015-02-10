@@ -183,7 +183,6 @@ class Restaurant < Sinatra::Base
     #   @party.tips = 0
     #   @party.save
     # end
-    Pry.start(binding)
 		redirect to "/parties/#{@party.id}/final"
 	end
 

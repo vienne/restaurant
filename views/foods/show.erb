@@ -1,7 +1,7 @@
 <h2>Food: <%= @food.name %></a> </h2>
 	<p>Cuisine: <%= @food.cuisine %></p>
 	<p>Allergens: <%= @food.allergens %></p>
-	<p>Price: $<%= currency(@food.price) %></p>
+	<p>Price: <%= currency(@food.price) %></p>
 
 	<p><a href="/foods/<%=@food.id%>/edit">Edit <%= @food.name %></a><p>
 
