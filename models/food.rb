@@ -3,6 +3,6 @@ class Food < ActiveRecord::Base
   has_many :parties, through: :orders
 
   	validates :name, uniqueness: { case_sensitive: false, 
-  		message: "That item already exists!"}
+  		message: "That item already exists! Respect my AUTHORITHAI!"}
 
 end

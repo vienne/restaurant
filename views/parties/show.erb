@@ -11,12 +11,21 @@
 	<%end%>
 </div>
 
+<%if @party.paid %>
+
+	<h2>This party has closed out.</h2>
+	<div class="link">
+		<a href="/parties/<%= @party.id%>/final">View Final Receipt </a>
+	</div>
+<% else %>
+
 <div class="link">
 	<p><a href="/parties/<%=@party.id %>/edit"%>Edit Table</a></p>
 	<br>
 </div>
 <div class="form-text">
-	<h2>Current Orders:</h2>
+
+	<h2><a href="anchor">Current Orders:</a></h2>
 </div>
 
 <div class="form-text">
@@ -25,45 +34,48 @@
 			<% @orders.each do |order| %>
 				<li>
 
-				<p>Item: <%= order.food.name %></p>
-				<br>
+					<p>Item: <%= order.food.name %></p>
+					<br>
 
-				<p>Allergens: <%= order.food.allergens %></p>
-				<br>
-				<p>Price: <%=currency(order.food.price)%>
-				</p>
-				<% if order.free %>
-				<p> This item as free! </p>
-				<% else %>
+					<p>Allergens: <%= order.food.allergens %></p>
+					<br>
+					<p>Price: <%=currency(order.food.price)%>
+					</p>
+					<% if order.free %>
+						<p> This item as free! </p>
+					<% else %>
 
 
-				<form action="/orders/<%= order.id %>" method="POST">
-				<input type="hidden" name="order[free]" value="1">
-				<input type="hidden" name="_method" value="PATCH">
-  				<input type="submit" value="Comp Item">
+						<form action="/orders/<%= order.id %>" method="POST">
+						<input type="hidden" name="order[free]" value="1">
+						<input type="hidden" name="_method" value="PATCH">
+  					<input type="submit" value="Comp Item">
   			<%end%>	
 
-  				<form action="/orders/<%= order.id %>" method="POST">
-					<input type="hidden" name="_method" value="DELETE">
-					<input type="submit" value="Delete Item">
-				</form>
-				</form>
-			</li>
-			<%end%>
+  					<form action="/orders/<%= order.id %>" method="POST">
+						<input type="hidden" name="_method" value="DELETE">
+						<input type="submit" value="Delete Item">
+						</form>
+						</form>
+						</li>
+				<%end%>
 
-	</ol>
-<% else %>
-	<p>"Nothing ordered yet!" </p>
-<% end %>
+		</ol>
+	<% else %>
+		<p>"Nothing ordered yet!" </p>
+	<% end %>
 </div>
 </div>
+
+
+
 
 
 <div class="form-text">
 	<h2>Add an Order:</h2>
 </div>
 <div class="drop_down">
-<form action="/orders" method='POST'>
+	<form action="/orders" method='POST'>
 	<select name="order[food_id]">
 		<% @new_food.each do |food| %>
 			<option value="<%= food.id %>"><%= food.name %></option>
@@ -76,8 +88,9 @@
 <div class="link">
 	<a href="/parties/<%= @party.id%>/receipt">Generate Receipt</a>
 </div>
-<!-- <form action="/parties/<%= @party.id %>" method="POST">
-  <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Party">
-</form> -->
+
+<% end %>
+
+
+
 

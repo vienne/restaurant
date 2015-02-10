@@ -122,17 +122,6 @@ body {
     border-radius: 0;
     height: 34px;
     margin-bottom: 16px; }
-  body form input[type='number'] {
-    background: #1D576D;
-    color: white;
-    width: 268px;
-    padding: 5px;
-    font-size: 20px;
-    line-height: 1;
-    border: 0;
-    border-radius: 0;
-    height: 34px;
-    margin-bottom: 16px; }
   body form input[type='password'] {
     width: 200px;
     height: 32px;
@@ -199,7 +188,7 @@ body {
     margin-right: auto;
     width: 100%; }
 
-  body form {
+  form {
     width: 100%; }
 
   input[type="text"] {

@@ -30,7 +30,7 @@ CREATE TABLE parties (
     updated_at    TIMESTAMP, 
     employee_id     INT         NOT NULL,
     tips            INT         DEFAULT 0,
-    total           INT         DEFAULT 0,
+    total           INT         DEFAULT 0
             
   );
 
@@ -47,7 +47,7 @@ CREATE TABLE orders (
 CREATE TABLE employees (
     id            SERIAL      PRIMARY KEY,
     name          TEXT        NOT NULL
-  )
+  );
 
 
 

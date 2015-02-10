@@ -1,3 +1,5 @@
+/*sass -w styles.scss:styles.css*/
+
 body {
 	font-family: 'Inconsolata';
 	h2 {
@@ -20,33 +22,7 @@ body {
 
 			}
 	}
-	/*#nav {
-		width: 100%;
-		text-align: center;
-		margin: 0 auto;
-		padding: 0;
-		list-style: none;
-		font-weight: bold;
-		margin-bottom: 20px;
-		margin-top: 30px;
-
-			li {
-				display: inline;
-				text-align: center;
-				
-			}
-
-			a {
-				margin: 5px 10px 5px 10px;
-				text-decoration: none;
-				font-size: 20px;
-				color: #1d576d;
-				padding: 8px;
-				text-align: center;
 	
-			
-			}
-		}*/
 nav {
 	margin-top: 0;
 }
@@ -130,7 +106,7 @@ nav ul {
 			margin-left: auto;
 			margin-right: auto;
 			margin-bottom: 40px;
-			width: 60%;
+			width: 40%;
 			height: auto;
 		}
 
@@ -199,6 +175,20 @@ nav ul {
 		}
 
 		.drop_down select {
+			background: #1D576D;
+			color: white;
+   		width: 268px;
+   		padding: 5px;
+   		font-size: 20px;
+   		line-height: 1;
+   		border: 0;
+   		border-radius: 0;
+   		height: 34px;
+   		margin-bottom: 16px;
+
+			}
+
+			form input[type='number'] {
 			background: #1D576D;
 			color: white;
    		width: 268px;
@@ -300,20 +290,37 @@ nav ul {
 		text-align: center;
 		margin-left: auto;
 		margin-right: auto;
-		width: 20em;
-}
+		width: 100%;
+	}
+	body form {
+		width: 100%;
+	}
 	input[type="text"] {
 		display: block;
 		text-align: center;
 		margin-left: auto;
 		margin-right: auto;
-		width: 20em;
+		width: 100%;
 	}
-}
-#nav a {
+	input[type="submit"] {
+		margin: auto;
+	}
+	#nav a {
 	float: none;
 	display: block;
 	width: 100%;
+	}
+	.media {
+		margin: 0 auto;
+		width: 650px;
+		display: block;
+	}
+	.form-text p {
+		display: block;
+		margin: 0 auto;
+		text-align: center;
+	}
+
 }
 
 @media print {

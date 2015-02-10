@@ -5,7 +5,7 @@ end
 
 class Restaurant < Sinatra::Base
   register Sinatra::ActiveRecordExtension
-  set :default_currency_unit, '$'
+  set :default_currency_unit, '£ '
   set :default_currency_precision, 2
   set :default_currency_separator, ' '
   
@@ -124,7 +124,6 @@ class Restaurant < Sinatra::Base
     @party.update(params[:party])
     @foods = Food.all
 
-
     redirect to "/parties/#{@party.id}"
   end
 
@@ -173,17 +172,24 @@ class Restaurant < Sinatra::Base
 
 	patch '/parties/:id/checkout' do
 		@party = Party.find(params[:id])
+    unless params[:party][:tips] == nil
+      params[:party][:tips] = 0
+    end
+    @party.tips = params[:party][:tips]
     @party.total= @party.foods.sum(:price)
 		@party.paid = 'true'
-    @party.tips = params[:party][:tips]
-   
-		@party.save
-		
+    @party.save
+    # if !@party.save
+    #   @party.tips = 0
+    #   @party.save
+    # end
+    Pry.start(binding)
 		redirect to "/parties/#{@party.id}/final"
 	end
 
   get '/parties/:id/final' do
     @party = Party.find(params[:id])
+    
     erb :'parties/final'
   end
 

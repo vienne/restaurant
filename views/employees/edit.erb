@@ -2,13 +2,13 @@
 <h2>Edit Employee Information</h2>
 <h2> <%= @employee.name %></h2>
 
-<div class="small-screen">
+
 <form action="/employees/<%= @employee.id %>" method='POST'>
   <div class="form-text">
-  	Edit Your Name: 
-  
+  	<p>Edit Your Name:<p>
+  </div>
   <input type="text" name='employee[name]' value="<%= @employee.name %>">
-	</div>
+
   <br>
 
   <input type="hidden" name="_method" value="PATCH">
@@ -20,4 +20,3 @@
   <input type="submit" value="Delete Employee">
 </form>
 
-</div>

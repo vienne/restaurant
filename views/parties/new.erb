@@ -4,19 +4,23 @@
 
 <div class="drop_down">
 <form action="/parties" method='POST'>
-<div class="form-text"
-	Table Number: 
 </div>
+
+<div class="form-text">
+<p>	Table Number: <p>
+</div>
+<div class="drop_down">
 	<select name="party[table_number]">
-		<% index = 1  %>
+		<% index = 1 %>
 		<% while index < 13 %>
 			<option value="<%= index %>"><%= index %> 
 			</option>
 			<% index += 1 %>
 		<% end %>
 	</select>
-
 </div>
+
+
 
 <div class="form-text">
   Guests: 
@@ -30,6 +34,8 @@
 <input type="submit">
 </div>
 </form>
+
+
 
 
 
