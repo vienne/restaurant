@@ -80,5 +80,8 @@ DEPENDENCIES
   sinatra-activerecord
   sinatra-contrib
   sinatra-helpers
+<<<<<<< HEAD
   sinatra-reloader
+=======
+>>>>>>> b80fcf4f0d15500dc87bad784e0fd2aa9daa8cde
   unicorn
