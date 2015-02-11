@@ -29,60 +29,7 @@ class Restaurant < Sinatra::Base
   	erb :index
   end
 
-  get "/foods" do
-  	@foods = Food.all
-
-  	erb :'foods/index'
- 	end
-
- 	get '/foods/new' do
-    
- 		erb :'foods/new'
- 	end
-
-  get '/foods/error' do
-    erb :'foods/error'
-  end
-
- 	get "/foods/:id" do
- 		@food = Food.find(params[:id])
-
- 		erb :'foods/show'
- 	end
-
- 	post '/foods' do
- 		food = Food.create(params[:food])
-    food.name.capitalize!
-
-    if food.valid?
-      redirect to "/foods/#{food.id}"
-    else
-      @food = food
-      @error_messages = food.errors.messages
-      # redirect to "/foods/error"
-      erb :'foods/new'
-    end
-  end
-  
- 	get '/foods/:id/edit' do
-    @food = Food.find(params[:id])
-    erb :'foods/edit'
-  end
-
-  patch '/foods/:id' do
-    food = Food.find(params[:id])
-    food.update(params[:food])
-
-    redirect to "/foods/#{food.id}"
-  end
-
-  delete '/foods/:id' do
-    food = Food.find(params[:id])
-    food.destroy
-    redirect to "/foods"    
-  end
-
-  get '/parties' do
+ get '/parties' do
   	@parties = Party.where(paid: false)
 
   	erb :'parties/index'
